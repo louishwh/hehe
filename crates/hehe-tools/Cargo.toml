@@ -1,0 +1,33 @@
+[package]
+name = "hehe-tools"
+description = "Tool system and built-in tools for hehe AI Agent framework"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+authors.workspace = true
+documentation = "https://docs.rs/hehe-tools"
+keywords = ["ai", "agent", "tools", "function-calling"]
+categories = ["development-tools"]
+
+[features]
+default = ["builtin"]
+builtin = []
+shell = ["builtin"]
+http = ["builtin", "reqwest"]
+
+[dependencies]
+hehe-core.workspace = true
+async-trait.workspace = true
+tokio = { workspace = true, features = ["fs", "process", "io-util"] }
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+thiserror.workspace = true
+glob = "0.3"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"], optional = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
+tempfile = "3"

@@ -1,0 +1,49 @@
+[package]
+name = "hehe-store"
+description = "Unified storage abstraction layer for hehe AI Agent framework"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+authors.workspace = true
+documentation = "https://docs.rs/hehe-store"
+keywords = ["ai", "agent", "storage", "sqlite"]
+categories = ["database"]
+
+[features]
+default = ["sqlite", "memory-cache"]
+
+# Local storage backends
+sqlite = ["rusqlite"]
+duckdb = ["dep:duckdb"]
+memory-cache = ["moka"]
+memory-vector = []  # Simple in-memory vector store
+
+# Remote storage backends (P1+)
+# postgres = ["sqlx"]
+# redis = ["dep:redis"]
+# qdrant = ["qdrant-client"]
+
+# Combinations
+local-full = ["sqlite", "duckdb", "memory-cache", "memory-vector"]
+
+[dependencies]
+hehe-core.workspace = true
+async-trait.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+thiserror.workspace = true
+parking_lot = "0.12"
+base64 = "0.22"
+
+# Local storage
+rusqlite = { version = "0.32", features = ["bundled", "modern_sqlite"], optional = true }
+duckdb = { version = "1.0", features = ["bundled"], optional = true }
+moka = { version = "0.12", features = ["future"], optional = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
+tempfile = "3"

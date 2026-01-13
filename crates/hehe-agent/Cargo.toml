@@ -1,0 +1,31 @@
+[package]
+name = "hehe-agent"
+description = "Agent runtime for hehe AI Agent framework"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+authors.workspace = true
+documentation = "https://docs.rs/hehe-agent"
+keywords = ["ai", "agent", "llm", "chatbot"]
+categories = ["development-tools"]
+
+[features]
+default = []
+
+[dependencies]
+hehe-core.workspace = true
+hehe-llm.workspace = true
+hehe-tools.workspace = true
+async-trait.workspace = true
+tokio = { workspace = true, features = ["sync"] }
+tokio-stream.workspace = true
+futures.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }

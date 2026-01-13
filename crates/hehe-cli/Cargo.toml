@@ -1,0 +1,34 @@
+[package]
+name = "hehe-cli"
+description = "Command-line interface for hehe AI Agent framework"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+authors.workspace = true
+documentation = "https://docs.rs/hehe-cli"
+keywords = ["ai", "agent", "cli", "chatbot"]
+categories = ["command-line-utilities"]
+
+[[bin]]
+name = "hehe"
+path = "src/main.rs"
+
+[dependencies]
+hehe-core.workspace = true
+hehe-agent.workspace = true
+hehe-llm.workspace = true
+hehe-tools.workspace = true
+hehe-server.workspace = true
+clap = { version = "4", features = ["derive", "env"] }
+tokio = { workspace = true, features = ["full"] }
+tokio-stream.workspace = true
+tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+rustyline = "15"
+colored = "2"
+anyhow = "1"

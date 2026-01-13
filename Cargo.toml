@@ -1,0 +1,100 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/hehe-core", "crates/hehe-llm", "crates/hehe-store", "crates/hehe-tools", "crates/hehe-agent", "crates/hehe-server", "crates/hehe-cli",
+]
+
+[package]
+name = "hehe"
+version = "0.0.1"
+edition = "2021"
+description = "A modular AI Agent framework in Rust"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/user/hehe"
+documentation = "https://docs.rs/hehe"
+readme = "README.md"
+keywords = ["ai", "agent", "llm", "openai", "chatbot"]
+categories = ["development-tools", "asynchronous"]
+authors = ["hehe contributors"]
+
+[dependencies]
+hehe-core = { version = "0.0.1", path = "crates/hehe-core" }
+hehe-llm = { version = "0.0.1", path = "crates/hehe-llm" }
+hehe-tools = { version = "0.0.1", path = "crates/hehe-tools" }
+hehe-agent = { version = "0.0.1", path = "crates/hehe-agent" }
+hehe-server = { version = "0.0.1", path = "crates/hehe-server" }
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+async-trait = "0.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1"
+tracing-subscriber = "0.3"
+
+[[example]]
+name = "basic_chat"
+path = "examples/basic_chat.rs"
+
+[[example]]
+name = "with_tools"
+path = "examples/with_tools.rs"
+
+[[example]]
+name = "http_server"
+path = "examples/http_server.rs"
+
+[[example]]
+name = "custom_tool"
+path = "examples/custom_tool.rs"
+
+[[example]]
+name = "streaming"
+path = "examples/streaming.rs"
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+rust-version = "1.75"
+repository = "https://github.com/user/hehe"
+authors = ["hehe contributors"]
+
+[workspace.dependencies]
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# Error handling
+thiserror = "1.0"
+
+# Async
+tokio = { version = "1", features = ["full"] }
+tokio-util = "0.7"
+tokio-stream = "0.1"
+async-trait = "0.1"
+futures = "0.3"
+
+# Time & ID
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.0", features = ["v4", "v7", "serde"] }
+
+# Utilities
+bytes = "1.0"
+url = { version = "2.5", features = ["serde"] }
+camino = { version = "1.1", features = ["serde1"] }
+shellexpand = "3.1"
+tracing = "0.1"
+
+# Web
+axum = "0.7"
+tower = "0.5"
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+
+# Internal crates
+hehe-core = { version = "0.0.1", path = "crates/hehe-core" }
+hehe-store = { version = "0.0.1", path = "crates/hehe-store" }
+hehe-llm = { version = "0.0.1", path = "crates/hehe-llm" }
+hehe-tools = { version = "0.0.1", path = "crates/hehe-tools" }
+hehe-agent = { version = "0.0.1", path = "crates/hehe-agent" }
+hehe-server = { version = "0.0.1", path = "crates/hehe-server" }
